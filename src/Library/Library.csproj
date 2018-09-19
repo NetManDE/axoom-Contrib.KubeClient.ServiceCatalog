@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Kubernetes.ServiceCatalog.Models</AssemblyName>
+    <RootNamespace>Kubernetes.ServiceCatalog.Models</RootNamespace>
+    <LangVersion>7.2</LangVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <OutputPath>..\..\artifacts\$(AssemblyName)\</OutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IncludeSource>True</IncludeSource>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>AXOOM GmbH</Authors>
+    <Description>Models for Kubernetes Service Catalog (ServiceInctance and ClusterServiceClass)</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Contrib.KubeClient.CustomResources" Version="0.6.1" />
+  </ItemGroup>
+
+</Project>
