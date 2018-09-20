@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+
 namespace Kubernetes.ServiceCatalog.Models
 {
     /// <summary>
@@ -8,7 +10,8 @@ namespace Kubernetes.ServiceCatalog.Models
     /// condition or not. In the future, we could add other intermediate
     /// conditions, e.g. ConditionDegraded.
     /// </summary>
-    public enum ConditionStatus
+    [PublicAPI]
+	public enum ConditionStatus
     {
         True,
         False,

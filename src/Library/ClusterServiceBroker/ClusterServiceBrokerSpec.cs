@@ -231,7 +231,8 @@ namespace Kubernetes.ServiceCatalog.Models
     /// Manual indicates that the broker is only
     /// relisted when the spec of the broker changes.
     /// </summary>
-    public enum ServiceBrokerRelistBehavior
+    [PublicAPI]
+	public enum ServiceBrokerRelistBehavior
     {
         Duration,
         Manual

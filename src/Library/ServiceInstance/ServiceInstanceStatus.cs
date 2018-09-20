@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
@@ -185,18 +184,6 @@ namespace Kubernetes.ServiceCatalog.Models
     }
 
     /// <summary>
-    /// UserInfo holds information about the user that last changed a resource's spec.
-    /// </summary>
-    [PublicAPI]
-    public class UserInfo
-    {
-        public string Username { get; set; }
-        public string UID { get; set; }
-        public string[] Groups { get; set; }
-        public Dictionary<string, string[]> Extra { get; set; }
-    }
-
-    /// <summary>
     /// ServiceInstanceDeprovisionStatus is the status of deprovisioning a
     /// ServiceInstance
     /// NotRequired indicates that a provision
@@ -212,7 +199,8 @@ namespace Kubernetes.ServiceCatalog.Models
     /// requests have been sent for the ServiceInstance but they failed. The
     /// controller has given up on sending more deprovision requests.
     /// </summary>
-    public enum ServiceInstanceDeprovisionStatus
+    [PublicAPI]
+	public enum ServiceInstanceDeprovisionStatus
     {
         NotRequired,
         Required,
@@ -228,7 +216,8 @@ namespace Kubernetes.ServiceCatalog.Models
     /// ServiceInstanceProvisionStatusNotProvisioned indicates that the instance
     /// was not ever provisioned or was deprovisioned.
     /// </summary>
-    public enum ServiceInstanceProvisionStatus
+    [PublicAPI]
+	public enum ServiceInstanceProvisionStatus
     {
         Provisioned,
         NotProvisioned
@@ -243,7 +232,8 @@ namespace Kubernetes.ServiceCatalog.Models
     /// OrphanMitigation represents information about an
     /// orphan mitigation that is required after failed provisioning.
     /// </summary>
-    public enum ServiceInstanceConditionType
+    [PublicAPI]
+	public enum ServiceInstanceConditionType
     {
         Ready,
         Failed,
@@ -260,7 +250,8 @@ namespace Kubernetes.ServiceCatalog.Models
     /// Deprovision indicates that the ServiceInstance is
     /// being Deprovisioned.
     /// </summary>
-    public enum ServiceInstanceOperation
+    [PublicAPI]
+	public enum ServiceInstanceOperation
     {
         Provision,
         Update,

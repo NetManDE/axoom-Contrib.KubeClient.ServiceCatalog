@@ -32,6 +32,20 @@ namespace Kubernetes.ServiceCatalog.Models
         public static IServiceProvider UseClusterServicePlanCustomResource(this IApplicationBuilder app)
             => UseCustomResource<ClusterServicePlanStore>(app);
 
+        public static IServiceCollection AddClusterServiceBrokerCustomResource(this IServiceCollection services)
+            => services.AddCustomResourceWatcher<ClusterServiceBroker, ClusterServiceBrokerStore>("stable.axoom.com", "clusterServiceBroker")
+                       .AddSingleton<IClusterServiceBrokerStore>(prov => prov.GetRequiredService<ClusterServiceBrokerStore>());
+
+        public static IServiceProvider UseClusterServiceBrokerCustomResource(this IApplicationBuilder app)
+            => UseCustomResource<ClusterServiceBrokerStore>(app);
+
+        public static IServiceCollection AddServiceBindingCustomResource(this IServiceCollection services)
+            => services.AddCustomResourceWatcher<ServiceBinding, ServiceBindingStore>("stable.axoom.com", "serviceBinding")
+                       .AddSingleton<IServiceBindingStore>(prov => prov.GetRequiredService<ServiceBindingStore>());
+
+        public static IServiceProvider UseServiceBindingCustomResource(this IApplicationBuilder app)
+            => UseCustomResource<ServiceBindingStore>(app);
+
         public static IServiceProvider UseCustomResource<TCustomResourceStore>(this IApplicationBuilder app)
             where TCustomResourceStore : ICustomResourceWatcher
         {

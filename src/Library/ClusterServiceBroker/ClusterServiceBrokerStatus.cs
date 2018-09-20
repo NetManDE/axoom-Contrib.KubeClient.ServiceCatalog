@@ -102,7 +102,8 @@ namespace Kubernetes.ServiceCatalog.Models
     /// ServiceBrokerConditionFailed represents information about a final failure
     /// that should not be retried.
     /// </summary>
-    public enum ServiceBrokerConditionType
+    [PublicAPI]
+	public enum ServiceBrokerConditionType
     {
         Ready,
         Failed

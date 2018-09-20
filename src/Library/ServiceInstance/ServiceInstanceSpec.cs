@@ -98,28 +98,4 @@ namespace Kubernetes.ServiceCatalog.Models
         /// </summary>
         public long UpdateRequests { get; set; }
     }
-
-    [PublicAPI]
-    public class ParametersFromSource
-    {
-        /// <summary>
-        /// The Secret key to select from.
-        /// The value must be a JSON object.
-        /// </summary>
-        public SecretKey SecretKey { get; set; }
-    }
-
-    [PublicAPI]
-    public class SecretKey
-    {
-        /// <summary>
-        /// The name of the secret in the pod's namespace to select from.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The key of the secret to select from.  Must be a valid secret key.
-        /// </summary>
-        public string Key { get; set; }
-    }
 }
