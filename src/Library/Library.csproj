@@ -16,7 +16,7 @@
 
   <PropertyGroup>
     <Authors>AXOOM GmbH</Authors>
-    <Description>Models for Kubernetes Service Catalog (ServiceInctance and ClusterServiceClass)</Description>
+    <Description>Models for Kubernetes Service Catalog</Description>
     <Copyright>Copyright (c) 2017 AXOOM GmbH</Copyright>
     <PackageIconUrl>https://nuget.inside-axoom.org/resources/axoom_logo.png</PackageIconUrl>
     <RepositoryUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Kubernetes.ServiceCatalog.Models</RepositoryUrl>
