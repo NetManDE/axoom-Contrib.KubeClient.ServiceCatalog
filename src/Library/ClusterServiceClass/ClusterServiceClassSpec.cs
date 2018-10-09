@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
@@ -55,22 +55,16 @@ namespace Kubernetes.ServiceCatalog.Models
         public bool PlanUpdatable { get; set; }
 
         public bool Equals(ClusterServiceClassSpec other)
-        {
-            if (other == null) return false;
-            return ClusterServiceBrokerName == other.ClusterServiceBrokerName
-                && ExternalName == other.ExternalName
-                && ExternalID == other.ExternalID
-                && Description == other.Description
-                && Bindable == other.Bindable
-                && BindingRetrievable == other.BindingRetrievable
-                && PlanUpdatable == other.PlanUpdatable;
-        }
+            => other != null
+            && ClusterServiceBrokerName == other.ClusterServiceBrokerName
+            && ExternalName == other.ExternalName
+            && ExternalID == other.ExternalID
+            && Description == other.Description
+            && Bindable == other.Bindable
+            && BindingRetrievable == other.BindingRetrievable
+            && PlanUpdatable == other.PlanUpdatable;
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            return obj.GetType() == GetType() && Equals((ClusterServiceClassSpec)obj);
-        }
+        public override bool Equals(object obj) => obj is ClusterServiceClassSpec other && Equals(other);
 
         public override int GetHashCode()
         {

@@ -1,59 +1,81 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
 using Contrib.KubeClient.CustomResources;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Kubernetes.ServiceCatalog.Models
 {
-    [ExcludeFromCodeCoverage]
-    [PublicAPI]
     public static class DependencyInjectionExtensions
     {
-        private const string AxoomApiVersion = "stable.axoom.com";
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceClient{TResource}"/> for <see cref="ClusterServiceClass"/>s.
+        /// </summary>
+        public static IServiceCollection AddClusterServiceClassClient(this IServiceCollection services)
+            => services.AddCustomResourceClient(ClusterServiceClass.Definition);
 
-        public static IServiceCollection AddClusterServiceClassStore(this IServiceCollection services)
-        {
-            return services.AddCustomResourceWatcher<ClusterServiceClass, ClusterServiceClassStore>(AxoomApiVersion, "clusterServiceClass")
-                           .AddSingleton<IClusterServiceClassStore>(prov => prov.GetRequiredService<ClusterServiceClassStore>());
-        }
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ClusterServiceClass"/>s.
+        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
+        /// </summary>
+        public static IServiceCollection AddClusterServiceClassWatcher(this IServiceCollection services)
+            => services.AddCustomResourceWatcher(ClusterServiceClass.Definition);
 
-        public static IServiceProvider UseClusterServiceClassStore(this IServiceProvider provider)
-            => UseStore<ClusterServiceClassStore>(provider);
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceClient{TResource}"/> for <see cref="ClusterServicePlan"/>s.
+        /// </summary>
+        public static IServiceCollection AddClusterServicePlanClient(this IServiceCollection services)
+            => services.AddCustomResourceClient(ClusterServicePlan.Definition);
 
-        public static IServiceCollection AddServiceInstanceStore(this IServiceCollection services)
-            => services.AddCustomResourceWatcher<ServiceInstance, ServiceInstanceStore>(AxoomApiVersion, "serviceInstance")
-                       .AddSingleton<IServiceInstanceStore>(prov => prov.GetRequiredService<ServiceInstanceStore>());
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ClusterServicePlan"/>s.
+        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
+        /// </summary>
+        public static IServiceCollection AddClusterServicePlanWatcher(this IServiceCollection services)
+            => services.AddCustomResourceWatcher(ClusterServicePlan.Definition);
 
-        public static IServiceProvider UseServiceInstanceStore(this IServiceProvider provider)
-            => UseStore<ServiceInstanceStore>(provider);
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceClient{TResource}"/> for <see cref="ClusterServiceBroker"/>s.
+        /// </summary>
+        public static IServiceCollection AddClusterServiceBrokerClient(this IServiceCollection services)
+            => services.AddCustomResourceClient(ClusterServiceBroker.Definition);
 
-        public static IServiceCollection AddClusterServicePlanStore(this IServiceCollection services)
-            => services.AddCustomResourceWatcher<ClusterServicePlan, ClusterServicePlanStore>(AxoomApiVersion, "clusterServicePlan")
-                       .AddSingleton<IClusterServicePlanStore>(prov => prov.GetRequiredService<ClusterServicePlanStore>());
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ClusterServiceBroker"/>s.
+        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
+        /// </summary>
+        public static IServiceCollection AddClusterServiceBrokerWatcher(this IServiceCollection services)
+            => services.AddCustomResourceWatcher(ClusterServiceBroker.Definition);
 
-        public static IServiceProvider UseClusterServicePlanStore(this IServiceProvider provider)
-            => UseStore<ClusterServicePlanStore>(provider);
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceClient{TResource}"/> for <see cref="ServiceInstance"/>s.
+        /// </summary>
+        /// <param name="services">The service collection.</param>
+        /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
+        public static IServiceCollection AddServiceInstanceClient(this IServiceCollection services, string @namespace = null)
+            => services.AddCustomResourceClient(ServiceInstance.Definition);
 
-        public static IServiceCollection AddClusterServiceBrokerStore(this IServiceCollection services)
-            => services.AddCustomResourceWatcher<ClusterServiceBroker, ClusterServiceBrokerStore>(AxoomApiVersion, "clusterServiceBroker")
-                       .AddSingleton<IClusterServiceBrokerStore>(prov => prov.GetRequiredService<ClusterServiceBrokerStore>());
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ServiceInstance"/>s.
+        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
+        /// </summary>
+        /// <param name="services">The service collection.</param>
+        /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
+        public static IServiceCollection AddServiceInstanceWatcher(this IServiceCollection services, string @namespace = null)
+            => services.AddCustomResourceWatcher(ServiceInstance.Definition);
 
-        public static IServiceProvider UseClusterServiceBrokerStore(this IServiceProvider provider)
-            => UseStore<ClusterServiceBrokerStore>(provider);
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceClient{TResource}"/> for <see cref="ServiceBinding"/>s.
+        /// </summary>
+        /// <param name="services">The service collection.</param>
+        /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
+        public static IServiceCollection AddServiceBindingClient(this IServiceCollection services, string @namespace = null)
+            => services.AddCustomResourceClient(ServiceBinding.Definition);
 
-        public static IServiceCollection AddServiceBindingStore(this IServiceCollection services)
-            => services.AddCustomResourceWatcher<ServiceBinding, ServiceBindingStore>(AxoomApiVersion, "serviceBinding")
-                       .AddSingleton<IServiceBindingStore>(prov => prov.GetRequiredService<ServiceBindingStore>());
-
-        public static IServiceProvider UseServiceBindingStore(this IServiceProvider provider)
-            => UseStore<ServiceBindingStore>(provider);
-
-        public static IServiceProvider UseStore<TCustomResourceStore>(this IServiceProvider provider)
-            where TCustomResourceStore : ICustomResourceWatcher
-        {
-            provider.GetRequiredService<TCustomResourceStore>().StartWatching();
-            return provider;
-        }
+        /// <summary>
+        /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ServiceBinding"/>s.
+        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
+        /// </summary>
+        /// <param name="services">The service collection.</param>
+        /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
+        public static IServiceCollection AddServiceBindingWatcher(this IServiceCollection services, string @namespace = null)
+            => services.AddCustomResourceWatcher(ServiceBinding.Definition);
     }
 }

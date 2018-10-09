@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>Kubernetes.ServiceCatalog.Models</AssemblyName>
@@ -24,7 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Contrib.KubeClient.CustomResources" Version="0.6.1" />
+    <PackageReference Include="Contrib.KubeClient.CustomResources" Version="0.7.1-alpha0003" />
+    <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
   </ItemGroup>
 
 </Project>

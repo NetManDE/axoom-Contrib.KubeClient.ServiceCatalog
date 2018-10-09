@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
@@ -6,7 +7,7 @@ namespace Kubernetes.ServiceCatalog.Models
 {
     [ExcludeFromCodeCoverage]
     [PublicAPI]
-    public class ServiceInstanceSpec
+    public class ServiceInstanceSpec : IEquatable<ServiceInstanceSpec>
     {
         /// <summary>
         /// ExternalID is the identity of this object for use with the OSB API.
@@ -89,7 +90,6 @@ namespace Kubernetes.ServiceCatalog.Models
         /// </summary>
         public ParametersFromSource ParametersFrom { get; set; }
 
-
         /// <summary>
         /// UpdateRequests is a strictly increasing, non-negative integer counter that
         /// can be manually incremented by a user to manually trigger an update. This
@@ -97,5 +97,34 @@ namespace Kubernetes.ServiceCatalog.Models
         /// been made to the secrets from which the parameters are sourced.
         /// </summary>
         public long UpdateRequests { get; set; }
+
+        public bool Equals(ServiceInstanceSpec other)
+            => other != null
+            && ExternalID == other.ExternalID
+            && ClusterServiceClassExternalName == other.ClusterServiceClassExternalName
+            && ClusterServicePlanExternalName == other.ClusterServicePlanExternalName
+            && ClusterServiceClassExternalID == other.ClusterServiceClassExternalID
+            && ClusterServicePlanExternalID == other.ClusterServicePlanExternalID
+            && ClusterServiceClassName == other.ClusterServiceClassName
+            && ClusterServicePlanName == other.ClusterServicePlanName
+            && UpdateRequests == other.UpdateRequests;
+
+        public override bool Equals(object obj) => obj is ServiceInstanceSpec other && Equals(other);
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = ExternalID?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (ClusterServiceClassExternalName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (ClusterServicePlanExternalName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (ClusterServiceClassExternalID?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (ClusterServicePlanExternalID?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (ClusterServiceClassName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (ClusterServicePlanName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ UpdateRequests.GetHashCode();
+                return hashCode;
+            }
+        }
     }
 }
