@@ -14,10 +14,10 @@ namespace Kubernetes.ServiceCatalog.Models
     /// </summary>
     [ExcludeFromCodeCoverage]
     [PublicAPI]
-    public class ServiceBindingSpec: IEquatable<ServiceBindingSpec>
+    public class ServiceBindingSpec : IEquatable<ServiceBindingSpec>
     {
         /// <summary>
-        /// ServiceInstanceRef is the reference to the Instance this ServiceBinding is to.#
+        /// ServiceInstanceRef is the reference to the Instance this ServiceBinding is to.
         /// </summary>
         public ServiceInstance ServiceInstanceRef { get; set; }
 
@@ -61,99 +61,26 @@ namespace Kubernetes.ServiceCatalog.Models
         public string ExternalID { get; set; }
 
         public bool Equals(ServiceBindingSpec other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Equals(ServiceInstanceRef, other.ServiceInstanceRef)
-                && Equals(Parameters, other.Parameters)
-                && Equals(ParametersFrom, other.ParametersFrom)
-                && string.Equals(SecretName, other.SecretName)
-                && Equals(SecretTransforms, other.SecretTransforms)
-                && string.Equals(ExternalID, other.ExternalID);
-        }
+            => other != null
+            && Equals(Parameters, other.Parameters)
+            && Equals(ParametersFrom, other.ParametersFrom)
+            && SecretName == other.SecretName
+            && Equals(SecretTransforms, other.SecretTransforms)
+            && ExternalID == other.ExternalID;
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((ServiceBindingSpec) obj);
-        }
+        public override bool Equals(object obj) => obj is ServiceBindingSpec other && Equals(other);
 
         public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = (ServiceInstanceRef != null ? ServiceInstanceRef.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Parameters != null ? Parameters.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ParametersFrom != null ? ParametersFrom.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (SecretName != null ? SecretName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (SecretTransforms != null ? SecretTransforms.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ExternalID != null ? ExternalID.GetHashCode() : 0);
+                var hashCode = Parameters?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (ParametersFrom?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (SecretName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (SecretTransforms?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (ExternalID?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
-    }
-
-    /// <summary>
-    /// SecretTransform is a single transformation of the credentials returned
-    /// from the broker
-    /// </summary>
-    [ExcludeFromCodeCoverage]
-    [PublicAPI]
-    public class SecretTransform
-    {
-        public RenameKeyTransform RenameKey { get; set; }
-        public AddKeyTransform AddKey { get; set; }
-        public AddKeysFromTransform AddKeysFrom { get; set; }
-        public RemoveKeyTransform RemoveKey { get; set; }
-    }
-
-    /// <summary>
-    /// RenameKeyTransform specifies that one of the credentials keys returned
-    /// from the broker should be renamed
-    /// </summary>
-    [ExcludeFromCodeCoverage]
-    [PublicAPI]
-    public class RenameKeyTransform
-    {
-        public string From { get; set; }
-        public string To { get; set; }
-    }
-
-    /// <summary>
-    /// AddKeyTransform specifies that Service Catalog should add an
-    /// additional entry to the Secret associated with the ServiceBinding.
-    /// </summary>
-    [ExcludeFromCodeCoverage]
-    [PublicAPI]
-    public class AddKeyTransform
-    {
-        public string Key { get; set; }
-        public byte[] Value { get; set; }
-        public string StringValue { get; set; }
-        public string JSONPathExpression { get; set; }
-    }
-
-    /// <summary>
-    /// AddKeysFromTransform specifies that Service Catalog should merge
-    /// an existing secret into the the Secret associated with the ServiceBinding.
-    /// </summary>
-    [ExcludeFromCodeCoverage]
-    [PublicAPI]
-    public class AddKeysFromTransform
-    {
-        public object SecretRef { get; set; }
-    }
-
-    /// <summary>
-    /// RemoveKeyTransform specifies that one of the credentials keys returned
-    /// from the broker should not be included in the credentials Secret.
-    /// </summary>
-    [ExcludeFromCodeCoverage]
-    [PublicAPI]
-    public class RemoveKeyTransform
-    {
-        public string Key { get; set; }
     }
 }

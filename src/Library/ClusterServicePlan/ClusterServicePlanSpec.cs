@@ -7,7 +7,7 @@ namespace Kubernetes.ServiceCatalog.Models
 {
     [ExcludeFromCodeCoverage]
     [PublicAPI]
-    public class ClusterServicePlanSpec: IEquatable<ClusterServicePlanSpec>
+    public class ClusterServicePlanSpec : IEquatable<ClusterServicePlanSpec>
     {
         /// <summary>
         /// ExternalName is the name of this object that the Service Broker
@@ -67,41 +67,25 @@ namespace Kubernetes.ServiceCatalog.Models
         ClusterServiceClass ClusterServiceClass { get; set; }
 
         public bool Equals(ClusterServicePlanSpec other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return string.Equals(ExternalName, other.ExternalName)
-                && string.Equals(ExternalID, other.ExternalID)
-                && string.Equals(Description, other.Description)
-                && Bindable == other.Bindable
-                && Free == other.Free
-                && Equals(ExternalMetadata, other.ExternalMetadata)
-                && Equals(DefaultProvisionParameters, other.DefaultProvisionParameters)
-                && string.Equals(ClusterServiceBrokerName, other.ClusterServiceBrokerName)
-                && Equals(ClusterServiceClass, other.ClusterServiceClass);
-        }
+            => other != null
+            && ExternalID == other.ExternalID
+            && Description == other.Description
+            && Bindable == other.Bindable
+            && Free == other.Free
+            && ClusterServiceBrokerName == other.ClusterServiceBrokerName;
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((ClusterServicePlanSpec) obj);
-        }
+        public override bool Equals(object obj) => obj is ClusterServicePlanSpec other && Equals(other);
 
         public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = (ExternalName != null ? ExternalName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ExternalID != null ? ExternalID.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Description != null ? Description.GetHashCode() : 0);
+                var hashCode = ExternalName?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (ExternalID?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Description?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ Bindable.GetHashCode();
                 hashCode = (hashCode * 397) ^ Free.GetHashCode();
-                hashCode = (hashCode * 397) ^ (ExternalMetadata != null ? ExternalMetadata.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (DefaultProvisionParameters != null ? DefaultProvisionParameters.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ClusterServiceBrokerName != null ? ClusterServiceBrokerName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ClusterServiceClass != null ? ClusterServiceClass.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ClusterServiceBrokerName?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
