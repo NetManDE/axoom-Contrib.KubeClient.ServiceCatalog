@@ -9,7 +9,7 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public class ServiceBinding : CustomResource<ServiceBindingSpec, ServiceBindingStatus>
     {
-        public static CustomResourceDefinition<ServiceBinding> Definition { get; } = Crd.For<ServiceBinding>();
+        public static CustomResourceDefinition<ServiceBinding> Definition { get; } = Crd.For<ServiceBinding>("serviceBindings");
 
         public ServiceBinding()
         {}

@@ -8,7 +8,7 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public class ClusterServicePlan : CustomResource<ClusterServicePlanSpec, ClusterServicePlanStatus>
     {
-        public static CustomResourceDefinition<ClusterServicePlan> Definition { get; } = Crd.For<ClusterServicePlan>();
+        public static CustomResourceDefinition<ClusterServicePlan> Definition { get; } = Crd.For<ClusterServicePlan>("clusterServicePlans");
 
         public ClusterServicePlan()
         {}
