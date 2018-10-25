@@ -13,7 +13,6 @@ namespace Kubernetes.ServiceCatalog.Models
 
         /// <summary>
         /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ClusterServiceClass"/>s.
-        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
         /// </summary>
         public static IServiceCollection AddClusterServiceClassWatcher(this IServiceCollection services)
             => services.AddCustomResourceWatcher(ClusterServiceClass.Definition);
@@ -26,7 +25,6 @@ namespace Kubernetes.ServiceCatalog.Models
 
         /// <summary>
         /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ClusterServicePlan"/>s.
-        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
         /// </summary>
         public static IServiceCollection AddClusterServicePlanWatcher(this IServiceCollection services)
             => services.AddCustomResourceWatcher(ClusterServicePlan.Definition);
@@ -39,7 +37,6 @@ namespace Kubernetes.ServiceCatalog.Models
 
         /// <summary>
         /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ClusterServiceBroker"/>s.
-        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
         /// </summary>
         public static IServiceCollection AddClusterServiceBrokerWatcher(this IServiceCollection services)
             => services.AddCustomResourceWatcher(ClusterServiceBroker.Definition);
@@ -54,7 +51,6 @@ namespace Kubernetes.ServiceCatalog.Models
 
         /// <summary>
         /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ServiceInstance"/>s.
-        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
@@ -71,7 +67,6 @@ namespace Kubernetes.ServiceCatalog.Models
 
         /// <summary>
         /// Adds an <see cref="ICustomResourceWatcher{TResource}"/> for <see cref="ServiceBinding"/>s.
-        /// Remember to call <see cref="Contrib.KubeClient.CustomResources.DependencyInjectionExtensions.UseCustomResourceWatchers"/> during startup.
         /// </summary>
         /// <param name="services">The service collection.</param>
         /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>

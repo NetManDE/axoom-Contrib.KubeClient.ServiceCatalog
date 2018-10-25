@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Contrib.KubeClient.CustomResources" Version="0.8.1" />
+    <PackageReference Include="Contrib.KubeClient.CustomResources" Version="0.10.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
   </ItemGroup>
 
