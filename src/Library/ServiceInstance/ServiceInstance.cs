@@ -8,7 +8,7 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public class ServiceInstance : CustomResource<ServiceInstanceSpec, ServiceInstanceStatus>
     {
-        public new static CustomResourceDefinition Definition { get; } = Crd.For(pluralName: "serviceInstances", kind: "ServiceInstance");
+        public new static CustomResourceDefinition Definition { get; } = Crd.For(pluralName: "serviceinstances", kind: "ServiceInstance");
 
         public ServiceInstance()
             : base(Definition)

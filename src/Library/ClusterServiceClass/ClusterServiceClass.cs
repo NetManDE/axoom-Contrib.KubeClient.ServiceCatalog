@@ -8,7 +8,7 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public class ClusterServiceClass : CustomResource<ClusterServiceClassSpec, ClusterServiceClassStatus>
     {
-        public new static CustomResourceDefinition Definition { get; } = Crd.For(pluralName: "clusterServiceClasses", kind: "ClusterServiceClass");
+        public new static CustomResourceDefinition Definition { get; } = Crd.For(pluralName: "clusterserviceclasses", kind: "ClusterServiceClass");
 
         public ClusterServiceClass()
             : base(Definition)
