@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using Contrib.KubeClient.CustomResources;
 using JetBrains.Annotations;
@@ -9,13 +8,14 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public class ServiceBinding : CustomResource<ServiceBindingSpec, ServiceBindingStatus>
     {
-        public static CustomResourceDefinition<ServiceBinding> Definition { get; } = Crd.For<ServiceBinding>("serviceBindings");
+        public new static CustomResourceDefinition Definition { get; } = Crd.For(pluralName: "serviceBindings", kind: "ServiceBinding");
 
         public ServiceBinding()
+            : base(Definition)
         {}
 
-        public ServiceBinding(ServiceBindingSpec spec)
-            : base(spec)
+        public ServiceBinding(string @namespace, string name, ServiceBindingSpec spec)
+            : base(Definition, @namespace, name, spec)
         {}
     }
 }
