@@ -9,7 +9,8 @@
     <OutputPath>..\..\artifacts\$(AssemblyName)\</OutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <IncludeSource>True</IncludeSource>
+    <PublishRepositoryUrl>True</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
@@ -17,15 +18,15 @@
   <PropertyGroup>
     <Authors>AXOOM GmbH</Authors>
     <Description>Models for Kubernetes Service Catalog</Description>
-    <Copyright>Copyright (c) 2017 AXOOM GmbH</Copyright>
-    <PackageIconUrl>https://nuget.inside-axoom.org/resources/axoom_logo.png</PackageIconUrl>
-    <RepositoryUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Kubernetes.ServiceCatalog.Models</RepositoryUrl>
-    <PackageProjectUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Kubernetes.ServiceCatalog.Models?path=%2Freadme.md</PackageProjectUrl>
+    <Copyright>Copyright (c) AXOOM GmbH</Copyright>
+    <PackageProjectUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Kubernetes.ServiceCatalog.Models?_a=readme</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Contrib.KubeClient.CustomResources" Version="0.11.4" />
     <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
+    <PackageReference Include="Microsoft.SourceLink.Tfs.Git" Version="1.0.0-beta-63127-02" PrivateAssets="All"/>
+    <SourceLinkTfsGitHost Include="tfs.inside-axoom.org" VirtualDirectory="tfs"/>
   </ItemGroup>
 
 </Project>
