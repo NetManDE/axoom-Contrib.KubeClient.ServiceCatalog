@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 
 namespace Kubernetes.ServiceCatalog.Models
@@ -21,9 +22,10 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public enum ServiceInstanceDeprovisionStatus
     {
-        NotRequired,
-        Required,
-        Succeeded,
-        Failed
+        [EnumMember(Value = "")] None,
+        [EnumMember(Value = "notRequired")] NotRequired,
+        [EnumMember(Value = "required")] Required,
+        [EnumMember(Value = "succeeded")] Succeeded,
+        [EnumMember(Value = "failed")] Failed
     }
 }

@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 
 namespace Kubernetes.ServiceCatalog.Models
@@ -12,7 +13,8 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public enum ServiceBrokerRelistBehavior
     {
-        Duration,
-        Manual
+        [EnumMember(Value = "")] None,
+        [EnumMember(Value = "duration")] Duration,
+        [EnumMember(Value = "manual")] Manual
     }
 }

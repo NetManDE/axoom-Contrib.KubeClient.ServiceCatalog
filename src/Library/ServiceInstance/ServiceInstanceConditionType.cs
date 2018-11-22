@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 
 namespace Kubernetes.ServiceCatalog.Models
@@ -14,8 +15,9 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public enum ServiceInstanceConditionType
     {
-        Ready,
-        Failed,
-        OrphanMitigation
+        [EnumMember(Value = "")] None,
+        [EnumMember(Value = "ready")] Ready,
+        [EnumMember(Value = "failed")] Failed,
+        [EnumMember(Value = "orphanMitigation")] OrphanMitigation
     }
 }

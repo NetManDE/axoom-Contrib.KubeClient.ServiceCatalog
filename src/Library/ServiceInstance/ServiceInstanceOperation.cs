@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 
 namespace Kubernetes.ServiceCatalog.Models
@@ -15,8 +16,9 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public enum ServiceInstanceOperation
     {
-        Provision,
-        Update,
-        Deprovision
+        [EnumMember(Value = "")] None,
+        [EnumMember(Value = "provision")] Provision,
+        [EnumMember(Value = "update")] Update,
+        [EnumMember(Value = "deprovision")] Deprovision
     }
 }

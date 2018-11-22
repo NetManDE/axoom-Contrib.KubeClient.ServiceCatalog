@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 
 namespace Kubernetes.ServiceCatalog.Models
@@ -13,7 +14,8 @@ namespace Kubernetes.ServiceCatalog.Models
     [PublicAPI]
     public enum ServiceInstanceProvisionStatus
     {
-        Provisioned,
-        NotProvisioned
+        [EnumMember(Value = "")] None,
+        [EnumMember(Value = "provisioned")] Provisioned,
+        [EnumMember(Value = "notProvisioned")] NotProvisioned
     }
 }
