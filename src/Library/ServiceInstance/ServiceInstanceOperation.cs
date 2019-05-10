@@ -1,7 +1,7 @@
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     /// <summary>
     /// ServiceInstanceOperation represents a type of operation the controller can

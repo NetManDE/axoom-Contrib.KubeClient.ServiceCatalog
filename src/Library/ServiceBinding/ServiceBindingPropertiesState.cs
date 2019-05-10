@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     /// <summary>
     /// ServiceBindingPropertiesState is the state of a

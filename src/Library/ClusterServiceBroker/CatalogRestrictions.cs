@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     /// <summary>
     /// CatalogRestrictions is a set of restrictions on which of a broker's services

@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     /// <summary>
     /// ServiceInstancePropertiesState is the state of a ServiceInstance that

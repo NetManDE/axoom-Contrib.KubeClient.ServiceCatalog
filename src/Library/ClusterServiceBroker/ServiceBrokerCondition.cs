@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     /// <summary>
     /// ServiceBrokerCondition contains condition information for a Service Broker.

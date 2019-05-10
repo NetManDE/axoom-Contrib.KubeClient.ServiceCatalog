@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     [PublicAPI]
     public class SecretKey

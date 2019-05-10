@@ -1,7 +1,7 @@
 using Contrib.KubeClient.CustomResources;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     public static class DependencyInjectionExtensions
     {

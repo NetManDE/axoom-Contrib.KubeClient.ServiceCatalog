@@ -1,7 +1,7 @@
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     /// <summary>
     /// ServiceBrokerRelistBehavior represents a type of broker relist behavior.

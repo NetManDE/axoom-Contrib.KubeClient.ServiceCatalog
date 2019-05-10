@@ -1,6 +1,6 @@
 using Contrib.KubeClient.CustomResources;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     internal static class Crd
     {

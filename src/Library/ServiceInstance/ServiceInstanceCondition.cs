@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     /// <summary>
     /// ServiceInstanceCondition contains condition information about an Instance.

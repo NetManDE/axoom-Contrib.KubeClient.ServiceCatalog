@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Contrib.KubeClient.CustomResources;
 using JetBrains.Annotations;
 
-namespace Kubernetes.ServiceCatalog.Models
+namespace Contrib.KubeClient.ServiceCatalog
 {
     [ExcludeFromCodeCoverage]
     [PublicAPI]
