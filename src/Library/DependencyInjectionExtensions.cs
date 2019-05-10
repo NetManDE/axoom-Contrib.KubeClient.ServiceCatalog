@@ -45,8 +45,7 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// Adds an <see cref="ICustomResourceClient{TResource}"/> for <see cref="ServiceInstance"/>s.
         /// </summary>
         /// <param name="services">The service collection.</param>
-        /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
-        public static IServiceCollection AddServiceInstanceClient(IServiceCollection services, string @namespace = null)
+        public static IServiceCollection AddServiceInstanceClient(IServiceCollection services)
             => services.AddCustomResourceClient<ServiceInstance>();
 
         /// <summary>
@@ -55,14 +54,13 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// <param name="services">The service collection.</param>
         /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
         public static IServiceCollection AddServiceInstanceWatcher(this IServiceCollection services, string @namespace = null)
-            => services.AddCustomResourceWatcher<ServiceInstance>();
+            => services.AddCustomResourceWatcher<ServiceInstance>(@namespace);
 
         /// <summary>
         /// Adds an <see cref="ICustomResourceClient{TResource}"/> for <see cref="ServiceBinding"/>s.
         /// </summary>
         /// <param name="services">The service collection.</param>
-        /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
-        public static IServiceCollection AddServiceBindingClient(IServiceCollection services, string @namespace = null)
+        public static IServiceCollection AddServiceBindingClient(IServiceCollection services)
             => services.AddCustomResourceClient<ServiceBinding>();
 
         /// <summary>
@@ -71,6 +69,6 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// <param name="services">The service collection.</param>
         /// <param name="namespace">The Kubernetes namespace to watch. Leave unset to watch all.</param>
         public static IServiceCollection AddServiceBindingWatcher(this IServiceCollection services, string @namespace = null)
-            => services.AddCustomResourceWatcher<ServiceBinding>();
+            => services.AddCustomResourceWatcher<ServiceBinding>(@namespace);
     }
 }
