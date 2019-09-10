@@ -15,7 +15,7 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// was last processed by the controller. The reconciled generation is updated
         /// even if the controller failed to process the spec.
         /// </summary>
-        public long ReconciledGeneration { get; set; }
+        public long? ReconciledGeneration { get; set; }
 
         /// <summary>
         /// OperationStartTime is the time at which the current operation began.

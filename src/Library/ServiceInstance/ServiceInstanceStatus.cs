@@ -53,14 +53,14 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// Deprecated: use ObservedGeneration with conditions set to true to find
         /// whether generation was reconciled.
         /// </summary>
-        public long ReconciledGeneration { get; set; }
+        public long? ReconciledGeneration { get; set; }
 
         /// <summary>
         /// ObservedGeneration is the 'Generation' of the serviceInstanceSpec that
         /// was last processed by the controller. The observed generation is updated
         /// whenever the status is updated regardless of operation result.
         /// </summary>
-        public long ObservedGeneration { get; set; }
+        public long? ObservedGeneration { get; set; }
 
         /// <summary>
         /// OperationStartTime is the time at which the current operation began.
