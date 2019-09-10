@@ -30,7 +30,7 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// <summary>
         /// OperationStartTime is the time at which the current operation began.
         /// </summary>
-        public DateTime OperationStartTime { get; set; }
+        public DateTime? OperationStartTime { get; set; }
 
         /// <summary>
         /// InProgressProperties is the properties state of the

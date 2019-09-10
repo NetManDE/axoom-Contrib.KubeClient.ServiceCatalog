@@ -20,12 +20,12 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// <summary>
         /// OperationStartTime is the time at which the current operation began.
         /// </summary>
-        public DateTime OperationStartTime { get; set; }
+        public DateTime? OperationStartTime { get; set; }
 
         /// <summary>
         /// LastCatalogRetrievalTime is the time the Catalog was last fetched from
         /// the Service Broker
         /// </summary>
-        public DateTime LastCatalogRetrievalTime { get; set; }
+        public DateTime? LastCatalogRetrievalTime { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Contrib.KubeClient.ServiceCatalog
         /// LastTransitionTime is the timestamp corresponding to the last status
         /// change of this condition.
         /// </summary>
-        public DateTime LastTransitionTime { get; set; }
+        public DateTime? LastTransitionTime { get; set; }
 
         /// <summary>
         /// Reason is a brief machine readable explanation for the condition's last
